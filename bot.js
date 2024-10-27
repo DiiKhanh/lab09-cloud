@@ -1,5 +1,6 @@
 const { ActivityHandler, MessageFactory } = require('botbuilder');
 const { TextAnalyticsClient, AzureKeyCredential } = require('@azure/ai-text-analytics');
+require('dotenv').config();
 
 class EchoBot extends ActivityHandler {
     constructor() {
@@ -27,8 +28,8 @@ class EchoBot extends ActivityHandler {
 }
 
 async function analyzeText(userText) {
-    const endpoint = 'https://lab09-lang.cognitiveservices.azure.com/'; // Add your endpoint here
-    const key = '3xlR0EpG2zLnqNgS90vHLv7K9zNYNZ02uHjpjrYAJmb8qWJIe5kVJQQJ99AJACqBBLyXJ3w3AAAaACOGhc9Y'; // Add your key here
+    const endpoint = process.env.AzuzeEndpoint; // Add your endpoint here
+    const key = process.env.LangKey; // Add your key here
     const documents = [
         {
             text: userText,
